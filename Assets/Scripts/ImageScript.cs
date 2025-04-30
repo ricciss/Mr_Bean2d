@@ -11,6 +11,34 @@ public class ImageScript : MonoBehaviour
     public GameObject lady;
     public GameObject left;
     public GameObject right;
+    public GameObject imageField;
+    public Sprite[] soriteArray;
+    public GameObject scaleSlider;
+    public GameObject rotationSlider;
+
+
+    public void ChangeScale()
+    {
+        float currentScale = scaleSlider.GetComponent<Slider>().value;
+        imageField.transform.localScale = new Vector2(1F * currentScale, 1F * currentScale);
+    }
+    public void ChangeRotation()
+    {
+        float currentRotation = rotationSlider.GetComponent<Slider>().value;
+        imageField.transform.localRotation = Quaternion.Euler(0, 0, currentRotation * 360);
+    }
+
+    public void Dropdown(int index)
+    {
+        if (index == 0)
+            imageField.GetComponent<Image>().sprite = soriteArray[0];
+
+        else if (index == 1)
+            imageField.GetComponent<Image>().sprite = soriteArray[1];
+
+        else if(index == 2)
+            imageField.GetComponent<Image>().sprite = soriteArray[2];
+    }
 
     public void ToogleBean(bool value)
     {
